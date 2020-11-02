@@ -66,6 +66,16 @@ public class ResetController {
 			User.create("scottrum", "Scott Rumrill", "Scott Rumrill"),
 			User.create("scottsim", "Scott Simpson", "Scott Simpson") };
 
+	// SecureRandom
+	// NOTE: Use this method to get a SecureRandom object for use whenever
+	//       you need a Random number
+	public static SecureRandom generateRandom(String arg[]) {
+	        SecureRandom random1 = new SecureRandom();
+	        random1.nextBytes(new byte[20]);
+	        //random1.setSeed(123);
+	        return random1;
+	}
+	
 	@RequestMapping(value = "/reset", method = RequestMethod.GET)
 	public String showReset()
 	{
@@ -90,10 +100,10 @@ public class ResetController {
 		java.util.Date now = new java.util.Date();
 
 		/* BEGIN BAD CODE */
-		Random rand = new Random();
+		// Random rand = new Random();
 		/* END BAD CODE */
 		/* BEGIN GOOD CODE */
-		// SecureRandom rand = generateRandom(new String[]{});
+		SecureRandom rand = generateRandom(new String[]{});
 		/* END GOOD CODE */
 
 
