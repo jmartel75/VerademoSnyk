@@ -90,10 +90,10 @@ public class ResetController {
 		java.util.Date now = new java.util.Date();
 
 		/* BEGIN BAD CODE */
-		Random rand = new Random();
+		// Random rand = new Random();
 		/* END BAD CODE */
 		/* BEGIN GOOD CODE */
-		// SecureRandom rand = generateRandom(new String[]{});
+		SecureRandom rand = generateRandom(new String[]{});
 		/* END GOOD CODE */
 
 
