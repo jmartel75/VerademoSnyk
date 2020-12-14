@@ -26,9 +26,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: Veracode-war
-        path:
-          dist
-          !dist/**/*.war  
+  
       
     - name: Veracode Upload And Scan
       # You may pin to the exact commit or the version.
@@ -40,7 +38,7 @@ jobs:
       # createprofile
             createprofile: true
       # filepath
-            filepath: dist/verademo.war
+            filepath: verademo.war
       # version
             version: ${{ GITHUB.RUN_ID }}
       # vid
