@@ -34,7 +34,7 @@ jobs:
       # createprofile
             createprofile: true
       # filepath
-            filepath: '**/**.war'
+            filepath: -verademo.war
       # version
             version: ${{ GITHUB.RUN_ID }}
       # vid
