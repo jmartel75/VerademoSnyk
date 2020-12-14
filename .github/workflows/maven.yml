@@ -23,8 +23,11 @@ jobs:
         filename: 'verademo.war' 
     - name: Build with Maven
     - run: mvn -B package --file pom.xml
+    - run: mkdir staging && cp target/*.war staging
     - uses: actions/upload-artifact@v2
-
+      with:
+        name: Package
+        path: staging 
       
     - name: Veracode Upload And Scan
       # You may pin to the exact commit or the version.
