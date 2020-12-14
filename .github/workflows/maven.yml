@@ -34,7 +34,7 @@ jobs:
       # createprofile
             createprofile: true
       # filepath
-            filepath: -verademo.war
+            filepath: VeraDemo/target/verademo.war
       # version
             version: ${{ GITHUB.RUN_ID }}
       # vid
