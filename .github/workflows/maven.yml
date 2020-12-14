@@ -34,11 +34,16 @@ jobs:
       # createprofile
             createprofile: true
       # filepath
-            filepath: veracode.war
+            filepath: verademo.war
       # version
             version: ${{ GITHUB.RUN_ID }}
       # vid
             vid: ${{ secrets.VERACODE_API_ID }}
       # vkey
             vkey: ${{ secrets.VERACODE_API_KEY }}
-      
+          
+    - name: Download the Agent Based SCA Scanner
+        
+      env: # Set the secret as an input
+            SRCCLR_API_TOKEN: ${{ secrets.SRCCLR_API_TOKEN }}
+      run: curl -sSL https://download.sourceclear.com/ci.sh | sh      
