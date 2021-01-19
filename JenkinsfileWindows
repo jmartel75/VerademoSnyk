@@ -1,13 +1,27 @@
+# pipeline {
+#    agent any
+#
+#    stages {
+#        stage('Build') {
+#            steps {
+#                echo 'Building..'
+#                powershell 'mvn package'
+#            }
+#        }
 pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                powershell 'mvn package'
-            }
-        }
+   agent {
+      docker {
+         image 'maven:latest'
+      }
+   }
+   stages {
+      stage('Build') {
+         steps {
+            // Get some code from a GitHub repository
+            git 'https://github.com/jmartel75/verademo'
+            sh 'mvn -ntp package'
+         }
+      }
       stage('SCA SC') {
          steps {
             withCredentials([string(credentialsId: 'SRCCLR_API_TOKEN', variable: 'SRCCLR_API_TOKEN')]) {
