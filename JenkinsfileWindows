@@ -1,13 +1,13 @@
-# pipeline {
-#    agent any
-#
-#    stages {
-#        stage('Build') {
-#            steps {
-#                echo 'Building..'
-#                powershell 'mvn package'
-#            }
-#        }
+// pipeline {
+//    agent any
+//
+//    stages {
+//        stage('Build') {
+//            steps {
+//                echo 'Building..'
+//                powershell 'mvn package'
+//            }
+//        }
 pipeline {
    agent {
       docker {
