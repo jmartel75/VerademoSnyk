@@ -8,16 +8,15 @@ pipeline {
                 powershell 'mvn package'
             }
         }
-		stage('SCA') {
-			steps {
-			withCredentials([string(credentialsId: 'SRCCLR_API_TOKEN', variable: 'SRCCLR_API_TOKEN')]) {
-				powershell """
-                  Set-ExecutionPolicy AllSigned -Scope Process -Force
-                  iex ((New-Object System.Net.WebClient).DownloadString('https://download.srcclr.com/ci.ps1')) 
-                  srcclr scan --allow-dirty .
-		        """
-        	}
-		 }
+      stage('SCA SC') {
+         steps {
+            withCredentials([string(credentialsId: 'SRCCLR_API_TOKEN', variable: 'SRCCLR_API_TOKEN')]) {
+               sh '''
+                  curl -sSL https://download.sourceclear.com/ci.sh | sh
+               '''
+            }
+         }
+      }
 		stage('Veracode Pipeline Scan') {
             steps {
                 powershell """
