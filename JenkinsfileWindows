@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+environment {
+SRCCLR_API_KEY = credentials('SRCCLR_API_KEY')
+}
     stages {
         stage('Build') {
             steps {
